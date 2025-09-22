@@ -2,41 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Industrial Quality Monitoring Design System 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 20% 8%;
+    --foreground: 210 20% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 20% 10%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 20% 10%;
+    --popover-foreground: 210 20% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 100% 50%;
+    --primary-foreground: 210 20% 8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 20% 15%;
+    --secondary-foreground: 210 20% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 15%;
+    --muted-foreground: 210 10% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 20% 15%;
+    --accent-foreground: 210 20% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 20% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 20% 20%;
+    --input: 210 20% 15%;
+    --ring: 195 100% 50%;
 
-    --radius: 0.5rem;
+    /* Quality monitoring specific colors */
+    --warning: 45 95% 55%;
+    --warning-foreground: 210 20% 8%;
+    --success: 142 76% 36%;
+    --success-foreground: 210 20% 98%;
+    --critical: 0 85% 60%;
+    --critical-foreground: 210 20% 98%;
+    --info: 217 91% 60%;
+    --info-foreground: 210 20% 98%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(195 100% 40%));
+    --gradient-warning: linear-gradient(135deg, hsl(45 95% 55%), hsl(45 95% 45%));
+    --gradient-critical: linear-gradient(135deg, hsl(0 85% 60%), hsl(0 85% 50%));
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
