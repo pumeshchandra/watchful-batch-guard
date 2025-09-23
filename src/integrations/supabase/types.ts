@@ -14,7 +14,111 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          acknowledged: boolean
+          batch_id: string | null
+          created_at: string
+          id: string
+          message: string
+          parameter_type: string
+          parameter_value: number | null
+          severity: string
+          threshold_value: number | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          acknowledged?: boolean
+          batch_id?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          parameter_type: string
+          parameter_value?: number | null
+          severity: string
+          threshold_value?: number | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          acknowledged?: boolean
+          batch_id?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          parameter_type?: string
+          parameter_value?: number | null
+          severity?: string
+          threshold_value?: number | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      batch_data: {
+        Row: {
+          batch_id: string
+          id: string
+          ph: number | null
+          pressure: number | null
+          temperature: number | null
+          timestamp: string
+          user_id: string
+          viscosity: number | null
+        }
+        Insert: {
+          batch_id: string
+          id?: string
+          ph?: number | null
+          pressure?: number | null
+          temperature?: number | null
+          timestamp?: string
+          user_id: string
+          viscosity?: number | null
+        }
+        Update: {
+          batch_id?: string
+          id?: string
+          ph?: number | null
+          pressure?: number | null
+          temperature?: number | null
+          timestamp?: string
+          user_id?: string
+          viscosity?: number | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string | null
+          id: string
+          role: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name?: string | null
+          id?: string
+          role?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string | null
+          id?: string
+          role?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
