@@ -1,1 +1,4 @@
-project_id = "iunhiovfssonlwthmeeo"
+project_id = "watchful-batch-guard"
+
+[functions.send-alert-email]
+verify_jwt = false
