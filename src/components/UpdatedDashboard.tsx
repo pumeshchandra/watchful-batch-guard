@@ -81,7 +81,7 @@ const UpdatedDashboard = () => {
 
   // Generate mock data for simulation
   const generateMockData = async () => {
-    if (!profile?.id) return;
+    if (!user?.id || !profile?.email) return;
 
     const batchId = `BATCH-${Date.now()}`;
     const temperature = 85 + Math.random() * 10;
@@ -163,10 +163,11 @@ const UpdatedDashboard = () => {
       try {
         await supabase.functions.invoke('send-alert-email', {
           body: {
-            to: profile.email,
+            to: profile?.email || user?.email,
             ...violation,
           },
         });
+        console.log('Alert email sent for:', violation.title);
       } catch (emailError) {
         console.error('Error sending email:', emailError);
       }
