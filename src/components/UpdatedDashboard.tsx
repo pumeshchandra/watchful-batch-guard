@@ -33,7 +33,7 @@ interface Alert {
 }
 
 const UpdatedDashboard = () => {
-  const { profile, signOut } = useAuth();
+  const { user, profile, signOut } = useAuth();
   const { toast } = useToast();
   const [isSimulationRunning, setIsSimulationRunning] = useState(false);
   const [batchData, setBatchData] = useState<BatchData[]>([]);
@@ -90,16 +90,16 @@ const UpdatedDashboard = () => {
     const viscosity = 1200 + Math.random() * 200;
 
     // Insert batch data
-    const { error: batchError } = await supabase
-      .from('batch_data')
-      .insert({
-        batch_id: batchId,
-        temperature,
-        pressure,
-        ph,
-        viscosity,
-        user_id: profile.id
-      });
+      const { error: batchError } = await supabase
+        .from('batch_data')
+        .insert({
+          batch_id: batchId,
+          temperature,
+          pressure,
+          ph,
+          viscosity,
+          user_id: user?.id
+        });
 
     if (batchError) {
       console.error('Error inserting batch data:', batchError);
@@ -151,7 +151,7 @@ const UpdatedDashboard = () => {
         .from('alerts')
         .insert({
           ...violation,
-          user_id: profile.id
+          user_id: user?.id
         });
 
       if (alertError) {
@@ -189,7 +189,7 @@ const UpdatedDashboard = () => {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isSimulationRunning, profile?.id]);
+  }, [isSimulationRunning, user?.id]);
 
   const handleStartSimulation = () => {
     setIsSimulationRunning(true);
