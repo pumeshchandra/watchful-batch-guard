@@ -81,12 +81,8 @@ const UpdatedDashboard = () => {
 
   // Generate mock data for simulation
   const generateMockData = async () => {
-    if (!user?.id || !profile?.email) {
-      console.log('Cannot generate mock data - missing user ID or email:', { userId: user?.id, email: profile?.email });
-      return;
-    }
+    if (!user?.id || !profile?.email) return;
 
-    console.log('Generating mock data for user:', user.id);
     const batchId = `BATCH-${Date.now()}`;
     const temperature = 85 + Math.random() * 10;
     const pressure = 2.1 + Math.random() * 0.4;
@@ -107,15 +103,8 @@ const UpdatedDashboard = () => {
 
     if (batchError) {
       console.error('Error inserting batch data:', batchError);
-      toast({
-        title: "Database error",
-        description: `Failed to insert batch data: ${batchError.message}`,
-        variant: "destructive",
-      });
       return;
     }
-
-    console.log('Batch data inserted successfully:', batchId);
 
     // Check for violations and create alerts
     const violations = [];
@@ -192,7 +181,7 @@ const UpdatedDashboard = () => {
   useEffect(() => {
     let interval: NodeJS.Timeout;
     
-    if (isSimulationRunning && user?.id && profile?.email) {
+    if (isSimulationRunning) {
       interval = setInterval(() => {
         generateMockData();
       }, 3000); // Generate data every 3 seconds
@@ -201,26 +190,9 @@ const UpdatedDashboard = () => {
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isSimulationRunning, user?.id, profile?.email]);
+  }, [isSimulationRunning, user?.id]);
 
   const handleStartSimulation = () => {
-    console.log('Starting simulation. User:', user?.id, 'Profile email:', profile?.email);
-    if (!user?.id) {
-      toast({
-        title: "Authentication required",
-        description: "Please ensure you are logged in to start simulation",
-        variant: "destructive",
-      });
-      return;
-    }
-    if (!profile?.email) {
-      toast({
-        title: "Profile incomplete",
-        description: "Profile email is required for email alerts",
-        variant: "destructive",
-      });
-      return;
-    }
     setIsSimulationRunning(true);
     toast({
       title: "Simulation started",
