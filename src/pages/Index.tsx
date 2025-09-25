@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import Dashboard from "@/components/Dashboard";
+import Dashboard from "@/components/UpdatedDashboard";
 import { Loader2 } from "lucide-react";
 
 const Index = () => {
